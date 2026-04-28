@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix Printing Solutions - Investor Pitch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1E3A8A;
+            --secondary: #F97316;
+            --accent: #14B8A6;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+        }
+
+        /* Cover Section */
+        #cover {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            max-width: 100%;
+        }
+
+        .cover-content {
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .cover-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        .cover-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .cover-content .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+
+        .cover-content .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Stats */
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: var(--light);
+        }
+
+        /* Images */
+        .image-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 2rem 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .side-by-side {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Highlight Boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight-box p, .highlight-box li {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Lists */
+        .check-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .check-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .check-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--secondary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 8px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.4rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+
+        .timeline-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pie Chart Visualization */
+        .pie-chart-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .pie-chart {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--primary) 0deg 108deg,
+                var(--secondary) 108deg 216deg,
+                var(--accent) 216deg 288deg,
+                var(--dark) 288deg 360deg
+            );
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .pie-chart::after {
+            content: '30/30/20/20';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .cover-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .cover-content .tagline {
+                font-size: 1.3rem;
+            }
+
+            .side-by-side {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 6rem 1rem 3rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav {
+                display: none;
+            }
+
+            section {
+                page-break-inside: avoid;
+                max-width: 100%;
+            }
+
+            .card, .highlight-box {
+                break-inside: avoid;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .timeline-item, .stat-box {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .prototype-links {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .prototype-links a {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .prototype-links a:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">PHOENIX PRINTING SOLUTIONS</div>
+            <ul class="nav-links">
+                <li><a href="#cover">Home</a></li>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#market">Market</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#tech">Technology</a></li>
+                <li><a href="#business">Business</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#financial">Financial</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Cover Section -->
+    <section id="cover">
+        <!-- Replace with your Photo 1 -->
+        <img src="images/cover-photo.jpg" alt="Founder with UV Printer" class="cover-image">
+        <div class="cover-content">
+            <h1>PHOENIX PRINTING SOLUTIONS</h1>
+            <p class="tagline">Turning Dreams into Living Art</p>
+            <p class="subtitle">Mobile UV Wall Printing Services — Morocco</p>
+            <p style="margin-bottom: 2rem; opacity: 0.9;">
+                <i class="fas fa-user"></i> [Your Full Name] | 
+                <i class="fas fa-map-marker-alt"></i> Rabat, Morocco
+            </p>
+            <a href="#summary" class="cta-button">Explore the Pitch <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section id="summary">
+        <h2 class="section-title">Executive Summary</h2>
+        
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Market Opportunity</h3>
+                <p>Morocco's home décor market: <strong>$335.7M by 2029</strong> (8.24% CAGR). 326 printing shops... <strong>ZERO offer mobile UV wall printing</strong>.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                <h3>The Solution</h3>
+                <p>On-site, customizable UV printing with AI-powered design. Modular, mobile printer: <strong>7-min setup</strong>, nationwide coverage.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Why Now?</h3>
+                <p>Live prototypes deployed. Founder with <strong>7+ years Lexmark</strong> experience. <strong>6-month income reinvestment</strong> commitment.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 3rem;">
+            <h3><i class="fas fa-quote-left"></i> Key Message</h3>
+            <p class="quote" style="font-size: 1.3rem; line-height: 1.8;">
+                "We're entering a $335 million market with zero direct competition. I've already built the technology prototypes, 
+                I have hands-on experience operating this exact type of printer, and I'm committing 100% of my income for the 
+                first 6 months back into the business. This is execution-ready, not just an idea."
+            </p>
+        </div>
+    </section>
+
+    <!-- Market Opportunity -->
+    <section id="market">
+        <h2 class="section-title">Market Opportunity & Gap</h2>
+        
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Growing Demand</h3>
+                <div class="stat-box" style="margin: 1.5rem 0;">
+                    <span class="stat-number">$335.7M</span>
+                    <div class="stat-label">Home Décor Market by 2029<br>8.24% CAGR (2024-2029)</div>
+                </div>
+                <ul class="check-list">
+                    <li>Hotels & Hospitality</li>
+                    <li>Schools & Educational Institutions</li>
+                    <li>Corporate Offices & Retail</li>
+                    <li>Residential Interior Design</li>
+                    <li>Public Spaces & Events</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;"><i class="fas fa-search"></i> The Gap</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                    Morocco has <strong>326 digital printing services</strong>...
+                </p>
+                <div style="background: #fee2e2; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                    <p style="color: #991b1b; font-weight: 600; margin-bottom: 0.5rem;">BUT:</p>
+                    <ul class="check-list">
+                        <li>All are stationary (shop-based)</li>
+                        <li>Limited to vinyl, banners, posters</li>
+                        <li>Require outsourcing for large murals</li>
+                        <li>No on-site vertical UV printing</li>
+                    </ul>
+                </div>
+                <div class="highlight-box" style="margin-top: 1rem; padding: 1.5rem;">
+                    <p style="font-size: 1.2rem; font-weight: 700; text-align: center;">
+                        🏆 Direct Competitors: <span style="color: var(--secondary); font-size: 2rem;">0</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution & Innovation -->
+    <section id="solution">
+        <h2 class="section-title">Solution & Innovation</h2>
+        
+        <div class="highlight-box" style="text-align: center; padding: 3rem;">
+            <p class="quote" style="font-size: 2rem; line-height: 1.4;">
+                "We don't just print on walls —<br>
+                we turn dreams and ideas into<br>
+                <span style="color: var(--secondary);">living pieces of art</span>"
+            </p>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="color: var(--primary);"><i class="fas fa-universal-access"></i> Accessibility</h3>
+                <ul class="check-list">
+                    <li>Transparent pricing</li>
+                    <li>Minimum orders: 4m² (clients) / 6m² (entrepreneurs)</li>
+                    <li>AI-powered in-house design (no outsourcing)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="color: var(--secondary);"><i class="fas fa-truck-moving"></i> Mobility</h3>
+                <ul class="check-list">
+                    <li>Modular aluminum structure</li>
+                    <li>7-minute on-site installation</li>
+                    <li>Nationwide coverage from Rabat</li>
+                    <li>Unlimited horizontal print width</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="color: var(--accent);"><i class="fas fa-microchip"></i> Technology</h3>
+                <ul class="check-list">
+                    <li>UV-curable ink on any surface</li>
+                    <li>10mm adaptive print distance</li>
+                    <li>Power-recovery resume function</li>
+                    <li>Professional-grade precision</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="color: var(--dark);"><i class="fas fa-medal"></i> Craft</h3>
+                <ul class="check-list">
+                    <li>Founder's hands-on UV printer experience</li>
+                    <li>Lexmark technical expertise</li>
+                    <li>Preventive maintenance protocols</li>
+                    <li>Quality from Day 1</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology & Prototypes -->
+    <section id="tech">
+        <h2 class="section-title">Technology & Operational Prototypes</h2>
+        
+        <div class="highlight-box">
+            <h3><i class="fas fa-check-circle"></i> Beyond Idea Stage: Live Prototypes</h3>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">
+                    <i class="fas fa-globe"></i> Customer Portal
+                </h3>
+                <p style="background: var(--light); padding: 0.8rem; border-radius: 6px; margin-bottom: 1rem; word-break: break-all;">
+                    <strong>URL:</strong> phoenixapk.github.io/PhoenixPS
+                </p>
+                <ul class="check-list">
+                    <li>Request submission & project tracking</li>
+                    <li>Live pricing calculator with business logic</li>
+                    <li>Minimum order enforcement (4m²/4 pics)</li>
+                    <li>Distance-based logistics (0-50km free)</li>
+                    <li>Half-square charging logic</li>
+                    <li>Real-time project duration estimation</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">
+                    <i class="fas fa-cogs"></i> Management WebApp
+                </h3>
+                <p style="background: var(--light); padding: 0.8rem; border-radius: 6px; margin-bottom: 1rem; word-break: break-all;">
+                    <strong>URL:</strong> phoenixapk.github.io/Phoenix-WebApp
+                </p>
+                <ul class="check-list">
+                    <li>Job queue tracking & workspace management</li>
+                    <li>Dual-tier pricing (Client vs Entrepreneur)</li>
+                    <li>Operational dashboard for solo-founder</li>
+                    <li>Financial alignment with 30/30/20/20 model</li>
+                    <li>Admin workflow automation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 2rem; text-align: center;">
+            <p style="font-size: 1.3rem; font-weight: 600;">
+                🔥 Not Mockups — Production-Ready Systems<br>
+                <span style="font-size: 1rem; opacity: 0.9;">
+                    These platforms reduce manual overhead by ~40% and ensure pricing consistency from Day 1.
+                </span>
+            </p>
+        </div>
+
+        <div class="prototype-links">
+            <h3 style="margin-bottom: 1rem;"><i class="fas fa-external-link-alt"></i> Live Prototype Links</h3>
+            <a href="https://phoenixapk.github.io/PhoenixPS/public/index.html" target="_blank">
+                <i class="fas fa-user"></i> Customer Portal
+            </a>
+            <a href="https://phoenixapk.github.io/Phoenix-WebApp/shell.html" target="_blank">
+                <i class="fas fa-cog"></i> Management WebApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Business Model -->
+    <section id="business">
+        <h2 class="section-title">Business Model & Pricing Logic</h2>
+        
+        <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-dollar-sign"></i> Revenue Streams</h3>
+        <div class="grid-3">
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-ruler-combined" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <h4>Per m² Printing</h4>
+            </div>
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-palette" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <h4>Custom Design Fees</h4>
+            </div>
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-building" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <h4>Large Project Packages</h4>
+            </div>
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-tools" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <h4>Maintenance Contracts</h4>
+            </div>
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-handshake" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <h4>Branding Retainers</h4>
+            </div>
+        </div>
+
+        <h3 style="color: var(--primary); margin: 2rem 0 1rem;"><i class="fas fa-table"></i> Pricing Structure</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Client Mode</th>
+                    <th>Entrepreneur Mode</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>250 DH/m²</strong></td>
+                    <td><strong>200 DH/m²</strong></td>
+                </tr>
+                <tr>
+                    <td>Min: 4m² or 4 pictures</td>
+                    <td>Min: 6m² or 6 pictures</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="card" style="margin-top: 2rem;">
+            <h3 style="color: var(--accent); margin-bottom: 1rem;"><i class="fas fa-calculator"></i> Operational Logic</h3>
+            <div class="grid-3">
+                <div>
+                    <h4 style="color: var(--primary);">Distance</h4>
+                    <ul class="check-list">
+                        <li>0-50 km from Rabat = FREE</li>
+                        <li>51+ km = Round-trip × costs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary);">Charging</h4>
+                    <ul class="check-list">
+                        <li>Half-square logic</li>
+                        <li>Min 1m² per workspace</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary);">Speed</h4>
+                    <ul class="check-list">
+                        <li>~1 m²/hour</li>
+                        <li>8 m²/day capacity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Go-to-Market -->
+    <section id="gtm">
+        <h2 class="section-title">Go-to-Market Strategy</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>Weeks 1-2: Digital Foundation</h4>
+                <ul class="check-list">
+                    <li>Launch professional social accounts (IG, FB, LinkedIn, TikTok)</li>
+                    <li>Activate geo-targeted paid ads (Budget: 4,000 DH)</li>
+                    <li>Showcase before/after transformations</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Weeks 3-4: Local Activation</h4>
+                <ul class="check-list">
+                    <li>Distribute flyers & business cards to cafés, schools, real estate agencies</li>
+                    <li>Direct outreach to interior designers & event planners</li>
+                    <li>Co-working spaces and restaurants</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Weeks 5-8: Conversion Engine</h4>
+                <ul class="check-list">
+                    <li>"Launch Discount": First 10 clients get 15% off + free AI mockup</li>
+                    <li>Collect photo/video testimonials for social proof</li>
+                    <li>Build case study portfolio</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Weeks 9-12: Scale Signals</h4>
+                <ul class="check-list">
+                    <li>Retarget engaged leads with portfolio highlights</li>
+                    <li>Pitch B2B "Space Refresh" packages</li>
+                    <li>Measure CAC vs. LTV; optimize ad spend</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="text-align: center;">
+            <h3><i class="fas fa-bullseye"></i> Targets</h3>
+            <p style="font-size: 1.3rem; margin-top: 1rem;">
+                First paid project: <strong style="color: var(--secondary);">Day 30</strong><br>
+                5+ completed projects: <strong style="color: var(--secondary);">Day 90</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Founder Expertise -->
+    <section id="expertise">
+        <h2 class="section-title">Founder Expertise — Proven Capability</h2>
+        
+        <div class="highlight-box" style="margin-bottom: 3rem;">
+            <p class="quote" style="font-size: 1.5rem; text-align: center;">
+                "I'm not learning on your dollar.<br>I've already operated this technology."
+            </p>
+        </div>
+
+        <!-- Side-by-side photos -->
+        <div class="side-by-side">
+            <div class="image-container">
+                <!-- Replace with your Photo 2 -->
+                <img src="images/photo-2-school-alphabet.jpg" alt="Operating UV printer - School project">
+                <div class="image-caption">
+                    <i class="fas fa-check-circle"></i> Operating UV wall printer — Educational facility project, alphabet chart installation
+                </div>
+            </div>
+
+            <div class="image-container">
+                <!-- Replace with your Photo 3 -->
+                <img src="images/photo-3-calibration.jpg" alt="Calibration & quality control">
+                <div class="image-caption">
+                    <i class="fas fa-check-circle"></i> Calibration & quality control — Ensuring precision on multi-surface prints
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <h3 style="color: var(--primary);"><i class="fas fa-briefcase"></i> 7 Years 5 Months at Lexmark</h3>
+                <ul class="check-list">
+                    <li>Technical printer support & diagnostics</li>
+                    <li>Quality assurance & printhead troubleshooting</li>
+                    <li>International brand standards & processes</li>
+                    <li>Maintenance expertise at scale</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="color: var(--secondary);"><i class="fas fa-hand-paper"></i> Hands-On UV Printer Experience</h3>
+                <ul class="check-list">
+                    <li>Operated similar vertical UV printer in real projects</li>
+                    <li>Photo evidence: School alphabet charts, children's murals</li>
+                    <li>Mastery of: alignment, ink curing, calibration, maintenance</li>
+                    <li>Understanding of failure points → proactive prevention</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" style="background: linear-gradient(135deg, var(--light), white); border: 2px solid var(--accent);">
+            <h3 style="color: var(--accent);"><i class="fas fa-shield-alt"></i> Technical Preparedness</h3>
+            <ul class="check-list">
+                <li>Spare parts kit + ultrasonic cleaner purchased upfront</li>
+                <li>Zero trial-and-error phase</li>
+                <li>Quality delivery from Day 1</li>
+                <li>Credibility with clients: I speak the craft language</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Hardware -->
+    <section id="hardware">
+        <h2 class="section-title">Hardware & Technical Specifications</h2>
+        
+        <div class="image-container" style="max-width: 800px; margin: 3rem auto;">
+            <!-- Replace with Photo 4 (TXC WP2500 spec image) -->
+            <img src="images/txc-wp2500-specs.jpg" alt="TXC WP2500 Specifications">
+        </div>
+
+        <div class="card">
+            <h3 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-print"></i> TXC® WP2500 — Key Features</h3>
+            <div class="grid-2">
+                <div>
+                    <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">Modular Design</h4>
+                    <p>Disassemble & transport solo</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">7-Minute Installation</h4>
+                    <p>Fast setup, maximum efficiency</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">Aluminum Structure</h4>
+                    <p>Lightweight + structural stability</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">10mm Print Distance</h4>
+                    <p>Precision on uneven surfaces</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">Unlimited Print Width</h4>
+                    <p>Motorized horizontal movement</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">Power Recovery</h4>
+                    <p>Resume printing after power loss</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="text-align: center; margin-top: 2rem;">
+            <p style="font-size: 1.2rem;">
+                <strong>Investment:</strong> <span style="color: var(--secondary); font-size: 1.5rem;">80,000 DH</span><br>
+                <small>Includes spare parts kit + ultrasonic cleaner</small>
+            </p>
+        </div>
+    </section>
+
+    <!-- Financial Strategy -->
+    <section id="financial">
+        <h2 class="section-title">Financial Strategy & Reinvestment Commitment</h2>
+        
+        <div class="pie-chart-container">
+            <div class="pie-chart"></div>
+            <div class="pie-legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--primary);"></div>
+                    <div>
+                        <strong>30% — Founder Income</strong><br>
+                        <small>Personal compensation</small>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--secondary);"></div>
+                    <div>
+                        <strong>30% — Operational Expenses</strong><br>
+                        <small>Ink, fuel, maintenance, logistics</small>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--accent);"></div>
+                    <div>
+                        <strong>20% — Blocked Capital Fund</strong><br>
+                        <small>Emergency reserve, equipment</small>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--dark);"></div>
+                    <div>
+                        <strong>20% — Employee Fund</strong><br>
+                        <small>Future salaries, training, CNSS</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="border: 3px solid var(--secondary);">
+            <h3><i class="fas fa-fire"></i> Founder Reinvestment Pledge (Months 0-6)</h3>
+            <p style="font-size: 1.2rem; line-height: 1.8; margin-top: 1rem;">
+                "For the first 6 months of operations, <strong>100% of the Founder's 30% allocation</strong> 
+                will be redirected into the Blocked Capital Fund."
+            </p>
+            <ul class="check-list" style="margin-top: 1.5rem;">
+                <li>No personal draw during launch phase</li>
+                <li>Accelerated capital buildup for resilience</li>
+                <li>Demonstrates skin-in-the-game</li>
+                <li>Activates standard 30/30/20/20 after Month 6</li>
+            </ul>
+        </div>
+
+        <div class="card" style="margin-top: 2rem;">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-calculator"></i> Investment Ask</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Cost (DH)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>UV Wall Printer (TXC WP2500)</td>
+                        <td>80,000</td>
+                        <td><i class="fas fa-check" style="color: var(--accent);"></i> Ready</td>
+                    </tr>
+                    <tr>
+                        <td>Spare Parts + Ultrasonic Cleaner</td>
+                        <td>8,000</td>
+                        <td><i class="fas fa-check" style="color: var(--accent);"></i> Ready</td>
+                    </tr>
+                    <tr>
+                        <td>Vehicle (Used Renault Express)</td>
+                        <td>~40,000</td>
+                        <td><i class="fas fa-search" style="color: var(--secondary);"></i> Sourcing</td>
+                    </tr>
+                    <tr>
+                        <td>Marketing Launch</td>
+                        <td>4,000</td>
+                        <td><i class="fas fa-check" style="color: var(--accent);"></i> Allocated</td>
+                    </tr>
+                    <tr>
+                        <td>Website Upgrade + Automation</td>
+                        <td>2,000</td>
+                        <td><i class="fas fa-check" style="color: var(--accent);"></i> Live</td>
+                    </tr>
+                    <tr>
+                        <td>Operating Buffer (3 months)</td>
+                        <td>15,000</td>
+                        <td><i class="fas fa-check" style="color: var(--accent);"></i> Reserved</td>
+                    </tr>
+                    <tr style="background: var(--primary); color: white; font-weight: 700;">
+                        <td><strong>TOTAL</strong></td>
+                        <td><strong>~149,000 DH</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Risks & Mitigations -->
+    <section id="risks">
+        <h2 class="section-title">Risks & Mitigations</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40%;">Risk</th>
+                    <th>Mitigation Strategy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Printer Downtime</strong></td>
+                    <td>Spare parts kit + ultrasonic cleaner upfront. Founder's Lexmark expertise eliminates external dependency.</td>
+                </tr>
+                <tr>
+                    <td><strong>New Competitors</strong></td>
+                    <td>First-mover brand advantage. Quality philosophy: "In a city of 100 restaurants, only the best stay booked."</td>
+                </tr>
+                <tr>
+                    <td><strong>Low Initial Demand</strong></td>
+                    <td>Lean Phase 1 model. 30/30/20/20 model funds marketing pivots. Targeted B2B outreach.</td>
+                </tr>
+                <tr>
+                    <td><strong>Travel Cost Overruns</strong></td>
+                    <td>Distance-based pricing embedded in web app. Client pays beyond 50 km. Blocked Capital Fund covers spikes.</td>
+                </tr>
+                <tr>
+                    <td><strong>Cash Flow Pressure</strong></td>
+                    <td>Employee Fund remains blocked until hiring triggers met. Revenue reinvestment prioritized.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box" style="text-align: center; margin-top: 2rem;">
+            <p class="quote" style="font-size: 1.3rem;">
+                "We don't fear competition — we fear complacency.<br>
+                Our strategy is to stay so good, so reliable, and so customer-obsessed<br>
+                that clients choose us by default."
+            </p>
+        </div>
+    </section>
+
+    <!-- Long-term Vision -->
+    <section id="vision">
+        <h2 class="section-title">Long-Term Vision (3-5 Years)</h2>
+        
+        <div class="grid-3">
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-truck" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <h3>Fleet Expansion</h3>
+                <p>5-10 UV wall printers across Morocco<br>3 logistics vehicles</p>
+            </div>
+
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-users" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <h3>Team Structure</h3>
+                <p>3 certified technician-drivers<br>1 secretary + 1 AI specialist</p>
+            </div>
+
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-trophy" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                <h3>Market Leadership</h3>
+                <p>National B2B contracts<br>Franchise-ready operations</p>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 3rem;">
+            <h3><i class="fas fa-globe-africa"></i> Ecosystem Impact</h3>
+            <ul class="check-list" style="margin-top: 1rem;">
+                <li>Job creation & skills development</li>
+                <li>Digital upskilling (AI tools, workflow automation)</li>
+                <li>Support for local designers & creative economy</li>
+                <li>Alignment with Morocco's MTNRA digital transformation goals</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title">Let's Build Something New in Morocco</h2>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-user"></i>
+                <h3>Contact</h3>
+                <p><strong>[Your Full Name]</strong><br>Founder, Phoenix Printing Solutions</p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p><a href="mailto:[your-email]">[Your Email]</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <p><a href="tel:[your-phone]">[Your Phone]</a></p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>Rabat/Sale, Morocco</p>
+            </div>
+        </div>
+
+        <div class="prototype-links">
+            <h3 style="margin-bottom: 1.5rem;"><i class="fas fa-laptop-code"></i> Explore Live Prototypes</h3>
+            <a href="https://phoenixapk.github.io/PhoenixPS/public/index.html" target="_blank">
+                <i class="fas fa-user"></i> Customer Portal
+            </a>
+            <a href="https://phoenixapk.github.io/Phoenix-WebApp/shell.html" target="_blank">
+                <i class="fas fa-cog"></i> Management WebApp
+            </a>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 3rem; text-align: center;">
+            <p class="quote" style="font-size: 1.4rem; line-height: 1.8;">
+                "I'm not asking you to bet on an idea.<br>
+                I'm asking you to partner with someone who's already reinvesting 100% of potential income,<br>
+                has built working prototypes, validated the market gap,<br>
+                and designed a financially disciplined model.<br><br>
+                <span style="color: var(--secondary); font-size: 1.6rem;">All I need is the catalyst to launch.</span>"
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem;">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">Ready for Next Steps</h3>
+            <ul class="check-list" style="display: inline-block; text-align: left;">
+                <li>Live prototype demos available upon request</li>
+                <li>Founder ready for technical & financial due diligence</li>
+                <li>Open to mentorship & strategic partnerships</li>
+                <li>Prepared for Startup Maroc Booster acceleration</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--dark); color: white; text-align: center; padding: 3rem 2rem;">
+        <h3 style="font-family: 'Montserrat', sans-serif; margin-bottom: 1rem;">PHOENIX PRINTING SOLUTIONS</h3>
+        <p style="opacity: 0.8; margin-bottom: 2rem;">Turning Dreams into Living Art</p>
+        <p style="font-size: 0.9rem; opacity: 0.6;">
+            &copy; 2026 Phoenix Printing Solutions. All rights reserved.<br>
+            <i class="fas fa-map-marker-alt"></i> Rabat, Morocco
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .timeline-item, .stat-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
