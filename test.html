@@ -55,70 +55,78 @@
         .check-list li { padding: 0.5rem 0; padding-left: 2rem; position: relative; }
         .check-list li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: var(--accent); }
 
-        /* --- UPDATED COVER STYLES --- */
+        /* --- COVER STYLES: LOGO TOP, INFO BOTTOM --- */
         .cover-section { 
             min-height: 100vh; 
             display: flex; 
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: space-between; /* Pushes logo to top, text to bottom */
             align-items: center; 
             text-align: center; 
             color: white; 
             position: relative; 
             overflow: hidden; 
+            background: linear-gradient(to bottom, #0f1c3f, #1e3a8a); /* Deep blue gradient background */
+            padding-top: 4rem; /* Space for nav bar */
         }
         
-        .cover-bg { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            object-position: center center;
-            z-index: 1;
-        }
-        
-        .cover-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(30, 58, 138, 0.7), rgba(31, 41, 55, 0.8));
+        .logo-container {
+            flex: 0 0 auto;
+            margin-top: 2rem;
             z-index: 2;
         }
         
-        .cover-content { 
-            z-index: 3; 
-            padding: 2rem 2rem 4rem; 
-            max-width: 900px; 
-            width: 100%;
-            margin-bottom: 2rem;
+        .logo-container img {
+            max-width: 400px; /* Adjust size as needed */
+            width: 80%;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.4)); /* Glow effect for golden logo */
         }
 
-        /* REDUCED FONT SIZES */
-        .cover-content h1 { 
-            font-size: 1.75rem;
-            margin-bottom: 0.5rem; 
-            font-weight: 800; 
+        .content-container {
+            z-index: 3;
+            padding: 2rem 2rem 5rem;
+            width: 100%;
+            background: linear-gradient(to top, rgba(15, 28, 63, 1), rgba(15, 28, 63, 0.7), transparent); /* Fading overlay for readability */
         }
-        .cover-content .tagline { 
-            font-size: 0.9rem;
+
+        /* DOUBLED FONT SIZES */
+        .content-container h1 { 
+            font-size: 3rem; /* Doubled from previous small size */
             margin-bottom: 1rem; 
+            font-weight: 800; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .content-container .tagline { 
+            font-size: 1.5rem; /* Doubled */
+            margin-bottom: 1.5rem; 
+            color: var(--secondary);
             font-weight: 600; 
         }
-        .cover-content p[style*="font-size: 1.3rem"] {
-            font-size: 0.65rem !important;
-            margin-bottom: 1rem;
-        }
-        .cover-content p[style*="font-size: 1.1rem"] {
-            font-size: 0.55rem !important;
+        .content-container .subtitle {
+            font-size: 1.1rem;
             margin-bottom: 1.5rem;
+            opacity: 0.9;
         }
-        .cover-content a {
-            padding: 0.5rem 1.25rem !important;
-            font-size: 0.7rem !important;
+        .content-container .info {
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        .content-container .cta-button {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .content-container .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
         }
         /* ------------------------------------------------ */
         
@@ -145,8 +153,9 @@
         
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .cover-content h1 { font-size: 1.25rem; }
-            .cover-content .tagline { font-size: 0.65rem; }
+            .logo-container img { max-width: 250px; }
+            .content-container h1 { font-size: 2rem; }
+            .content-container .tagline { font-size: 1rem; }
             .side-by-side { grid-template-columns: 1fr; }
             .image-container img { height: 350px; }
             .section-title { font-size: 1.8rem; }
@@ -178,18 +187,22 @@
         </div>
     </nav>
 
-    <!-- COVER SECTION WITH IMAGE 1.JPG -->
+    <!-- COVER SECTION: LOGO TOP, INFO BOTTOM -->
     <div class="cover-section">
-        <img src="assets/images/Image 1.jpg" alt="Phoenix Printing Solutions Logo" class="cover-bg">
-        <div class="cover-overlay"></div>
-        <div class="cover-content">
+        <!-- Top: Logo -->
+        <div class="logo-container">
+            <img src="assets/images/Image 1.jpg" alt="Phoenix Printing Solutions Logo">
+        </div>
+        
+        <!-- Bottom: Info -->
+        <div class="content-container">
             <h1>PHOENIX PRINTING SOLUTIONS</h1>
             <p class="tagline">Turning Dreams into Living Art</p>
-            <p style="margin-bottom: 2rem; font-size: 1.3rem;">Mobile UV Wall Printing Services — Morocco</p>
-            <p style="opacity: 0.9; margin-bottom: 2rem; font-size: 1.1rem;">
+            <p class="subtitle">Mobile UV Wall Printing Services — Morocco</p>
+            <p class="info">
                 <i class="fas fa-user"></i> Hicham [Your Last Name] | <i class="fas fa-map-marker-alt"></i> Rabat, Morocco
             </p>
-            <a href="#summary" style="padding: 1rem 2.5rem; background: var(--secondary); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; display: inline-block;"><i class="fas fa-arrow-down"></i> Explore the Pitch</a>
+            <a href="#summary" class="cta-button"><i class="fas fa-arrow-down"></i> Explore the Pitch</a>
         </div>
     </div>
 
