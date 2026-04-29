@@ -55,9 +55,39 @@
         .check-list li { padding: 0.5rem 0; padding-left: 2rem; position: relative; }
         .check-list li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; color: var(--accent); }
 
-        .cover-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; background: var(--dark); overflow: hidden; }
-        .cover-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; opacity: 0.4; }
-        .cover-content { z-index: 2; padding: 2rem; max-width: 900px; }
+        /* --- UPDATED COVER STYLES --- */
+        .cover-section { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: flex-end; /* Pushes content to the bottom */
+            align-items: center; /* Centers content horizontally */
+            text-align: center; 
+            color: white; 
+            position: relative; 
+            background: var(--dark); 
+            overflow: hidden; 
+            padding-bottom: 6rem; /* Space from the bottom edge */
+        }
+        
+        .cover-bg { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: center 20%; /* Focuses on upper part (face area) */
+            opacity: 0.4; 
+        }
+        
+        .cover-content { 
+            z-index: 2; 
+            padding: 2rem; 
+            max-width: 900px; 
+        }
+        /* ---------------------------- */
+
         .cover-content h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 800; }
         .cover-content .tagline { font-size: 1.8rem; color: var(--secondary); margin-bottom: 2rem; font-weight: 600; }
         
@@ -194,7 +224,7 @@
                     </ul>
                 </div>
                 <div class="highlight-box" style="margin-top: 1rem; padding: 1.5rem;">
-                    <p style="font-size: 1.2rem; font-weight: 700; text-align: center;">🏆 Direct Competitors: <span style="color: var(--secondary); font-size: 2.5rem;">3</span></p>
+                    <p style="font-size: 1.2rem; font-weight: 700; text-align: center;"> Direct Competitors: <span style="color: var(--secondary); font-size: 2.5rem;">3</span></p>
                 </div>
             </div>
         </div>
