@@ -60,12 +60,11 @@
             min-height: 100vh; 
             display: flex; 
             flex-direction: column;
-            justify-content: flex-end; /* Pushes everything to bottom */
+            justify-content: flex-end;
             align-items: center; 
             text-align: center; 
             color: white; 
             position: relative; 
-            background: var(--dark); 
             overflow: hidden; 
         }
         
@@ -75,43 +74,51 @@
             left: 0; 
             width: 100%; 
             height: 100%; 
-            object-fit: contain; 
-            object-position: center center; 
-            opacity: 0.7; 
+            object-fit: cover; 
+            object-position: center center;
             z-index: 1;
         }
         
+        .cover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(30, 58, 138, 0.7), rgba(31, 41, 55, 0.8));
+            z-index: 2;
+        }
+        
         .cover-content { 
-            z-index: 2; 
+            z-index: 3; 
             padding: 2rem 2rem 4rem; 
             max-width: 900px; 
-            background: linear-gradient(to top, rgba(30, 58, 138, 0.95), rgba(30, 58, 138, 0.7), transparent);
             width: 100%;
-            margin-bottom: 2rem; /* Space from bottom */
+            margin-bottom: 2rem;
         }
 
-        /* REDUCED FONT SIZES - HALF OF ORIGINAL */
+        /* REDUCED FONT SIZES */
         .cover-content h1 { 
-            font-size: 1.75rem; /* Was 3.5rem, now half */
+            font-size: 1.75rem;
             margin-bottom: 0.5rem; 
             font-weight: 800; 
         }
         .cover-content .tagline { 
-            font-size: 0.9rem; /* Was 1.8rem, now half */
+            font-size: 0.9rem;
             margin-bottom: 1rem; 
             font-weight: 600; 
         }
         .cover-content p[style*="font-size: 1.3rem"] {
-            font-size: 0.65rem !important; /* Was 1.3rem, now half */
+            font-size: 0.65rem !important;
             margin-bottom: 1rem;
         }
         .cover-content p[style*="font-size: 1.1rem"] {
-            font-size: 0.55rem !important; /* Was 1.1rem, now half */
+            font-size: 0.55rem !important;
             margin-bottom: 1.5rem;
         }
         .cover-content a {
-            padding: 0.5rem 1.25rem !important; /* Was 1rem 2.5rem, now half */
-            font-size: 0.7rem !important; /* Reduced button text */
+            padding: 0.5rem 1.25rem !important;
+            font-size: 0.7rem !important;
         }
         /* ------------------------------------------------ */
         
@@ -171,9 +178,10 @@
         </div>
     </nav>
 
-    <!-- COVER SECTION -->
+    <!-- COVER SECTION WITH IMAGE 1.JPG -->
     <div class="cover-section">
-        <img src="assets/images/logo-cover.jpg" alt="Phoenix Printing Solutions Logo" class="cover-bg">
+        <img src="assets/images/Image 1.jpg" alt="Phoenix Printing Solutions Logo" class="cover-bg">
+        <div class="cover-overlay"></div>
         <div class="cover-content">
             <h1>PHOENIX PRINTING SOLUTIONS</h1>
             <p class="tagline">Turning Dreams into Living Art</p>
